@@ -1,0 +1,1550 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: 'Inter', sans-serif;
+    color: #1d1d1f;
+
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(255, 59, 48, 0.20),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 90% 20%,
+            rgba(0, 122, 255, 0.22),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 50% 95%,
+            rgba(52, 199, 89, 0.18),
+            transparent 32%
+        ),
+        linear-gradient(
+            135deg,
+            #eef2ff 0%,
+            #f8f9ff 45%,
+            #edf9ff 100%
+        );
+
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+/* =====================================================
+   CAPA DE LUZ AMBIENTAL
+===================================================== */
+
+body::after {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -3;
+
+    background:
+        radial-gradient(
+            circle at 15% 70%,
+            rgba(255, 59, 48, 0.12),
+            transparent 22%
+        ),
+        radial-gradient(
+            circle at 85% 65%,
+            rgba(0, 122, 255, 0.13),
+            transparent 24%
+        ),
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(52, 199, 89, 0.10),
+            transparent 20%
+        );
+
+    filter: blur(25px);
+}
+
+
+/* =====================================================
+   ESFERAS RGB FLOTANTES
+===================================================== */
+
+.background-orb {
+    position: fixed;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+
+    filter: blur(90px);
+
+    opacity: 0.42;
+
+    z-index: -4;
+
+    animation:
+        floatingOrb 12s ease-in-out infinite alternate;
+}
+
+
+/* =====================================================
+   ESFERA ROJA
+===================================================== */
+
+.orb-one {
+    width: 330px;
+    height: 330px;
+
+    top: -120px;
+    left: -120px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 59, 48, 0.65),
+            rgba(255, 59, 48, 0)
+        );
+}
+
+
+/* =====================================================
+   ESFERA AZUL
+===================================================== */
+
+.orb-two {
+    width: 380px;
+    height: 380px;
+
+    top: 35%;
+    right: -150px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(0, 122, 255, 0.58),
+            rgba(0, 122, 255, 0)
+        );
+
+    animation-delay: -4s;
+}
+
+
+/* =====================================================
+   ESFERA VERDE
+===================================================== */
+
+.orb-three {
+    width: 300px;
+    height: 300px;
+
+    bottom: -130px;
+    left: 30%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(52, 199, 89, 0.52),
+            rgba(52, 199, 89, 0)
+        );
+
+    animation-delay: -7s;
+}
+
+
+/* =====================================================
+   CONTENEDOR PRINCIPAL
+===================================================== */
+
+.app-container {
+    width: min(100% - 32px, 900px);
+
+    margin: 0 auto;
+
+    padding: 40px 0 30px;
+
+    position: relative;
+}
+
+
+/* =====================================================
+   CUARTA LUZ — MEZCLA RGB
+===================================================== */
+
+.app-container::before {
+    content: "";
+
+    position: fixed;
+
+    width: 280px;
+    height: 280px;
+
+    top: 45%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        conic-gradient(
+            from 90deg,
+            rgba(255, 59, 48, 0.18),
+            rgba(52, 199, 89, 0.15),
+            rgba(0, 122, 255, 0.18),
+            rgba(255, 59, 48, 0.18)
+        );
+
+    filter: blur(100px);
+
+    opacity: 0.45;
+
+    pointer-events: none;
+
+    z-index: -4;
+}
+
+
+/* =====================================================
+   TEXTURA SUTIL
+===================================================== */
+
+.app-container::after {
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: -2;
+
+    opacity: 0.20;
+
+    background-image:
+        radial-gradient(
+            rgba(255, 255, 255, 0.8) 0.7px,
+            transparent 0.7px
+        );
+
+    background-size: 5px 5px;
+
+    mix-blend-mode: soft-light;
+}
+
+
+/* =====================================================
+   HEADER — LIQUID GLASS
+===================================================== */
+
+.glass-header {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 24px 28px;
+
+    margin-bottom: 22px;
+
+    border: 1px solid rgba(255, 255, 255, 0.65);
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.72),
+            rgba(255, 255, 255, 0.38)
+        );
+
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
+
+    box-shadow:
+        0 20px 50px rgba(31, 38, 135, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.glass-header::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+    right: 0;
+
+    height: 1px;
+
+    background: rgba(255, 255, 255, 0.95);
+}
+
+.header-icon {
+    width: 58px;
+    height: 58px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 18px;
+
+    color: white;
+
+    font-size: 25px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff3b30,
+            #ff2d55 35%,
+            #5856d6 70%,
+            #007aff
+        );
+
+    box-shadow:
+        0 10px 25px rgba(88, 86, 214, 0.25);
+}
+
+.header-text {
+    min-width: 0;
+}
+
+.eyebrow {
+    display: block;
+
+    margin-bottom: 3px;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2px;
+
+    color: rgba(29, 29, 31, 0.48);
+}
+
+.header-text h1 {
+    margin: 0;
+
+    font-size: clamp(25px, 4vw, 34px);
+
+    font-weight: 800;
+
+    letter-spacing: -1.5px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #1d1d1f,
+            #5856d6,
+            #007aff
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+}
+
+.header-text p {
+    margin: 4px 0 0;
+
+    color: rgba(29, 29, 31, 0.58);
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   TARJETA PRINCIPAL
+===================================================== */
+
+.glass-card {
+    padding: 24px;
+
+    border: 1px solid rgba(255, 255, 255, 0.70);
+
+    border-radius: 32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.76),
+            rgba(255, 255, 255, 0.42)
+        );
+
+    backdrop-filter: blur(35px);
+    -webkit-backdrop-filter: blur(35px);
+
+    box-shadow:
+        0 25px 70px rgba(31, 38, 135, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.90);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.glass-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 10%;
+    right: 10%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.95),
+            transparent
+        );
+}
+
+
+/* =====================================================
+   VISTA PREVIA DEL COLOR
+===================================================== */
+
+.color-preview {
+    min-height: 260px;
+
+    border-radius: 26px;
+
+    display: flex;
+    align-items: flex-end;
+
+    padding: 20px;
+
+    background: #000000;
+
+    position: relative;
+
+    overflow: hidden;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.20),
+        0 15px 40px rgba(0, 0, 0, 0.10);
+
+    transition:
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.color-preview::after {
+    content: "";
+
+    position: absolute;
+
+    width: 200px;
+    height: 200px;
+
+    top: -80px;
+    right: -60px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.18);
+
+    filter: blur(20px);
+}
+
+.preview-glass {
+    position: relative;
+
+    z-index: 2;
+
+    display: inline-flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+
+    padding: 13px 18px;
+
+    border-radius: 17px;
+
+    color: white;
+
+    background:
+        rgba(255, 255, 255, 0.16);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.28);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.preview-glass span {
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    opacity: 0.75;
+}
+
+.preview-glass strong {
+    font-size: 22px;
+
+    font-weight: 700;
+
+    letter-spacing: -0.5px;
+}
+
+
+/* =====================================================
+   INFORMACIÓN RGB / HEX
+===================================================== */
+
+.color-information {
+    display: grid;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 12px;
+
+    margin-top: 12px;
+}
+
+.information-card {
+    padding: 15px 17px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.42);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.60);
+
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.80);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 3px;
+}
+
+.information-card span {
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+
+    color: rgba(29, 29, 31, 0.42);
+}
+
+.information-card strong {
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #1d1d1f;
+}
+
+
+/* =====================================================
+   SECCIONES GLASS
+===================================================== */
+
+.glass-section {
+    margin-top: 20px;
+
+    padding: 20px;
+
+    border-radius: 24px;
+
+    background:
+        rgba(255, 255, 255, 0.32);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.55);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.70);
+}
+
+
+/* =====================================================
+   ENCABEZADOS DE SECCIÓN
+===================================================== */
+
+.section-heading {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-bottom: 16px;
+}
+
+.section-icon {
+    width: 42px;
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    font-size: 17px;
+
+    color: white;
+
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.10);
+}
+
+.section-icon.purple {
+    background:
+        linear-gradient(
+            135deg,
+            #af52de,
+            #5856d6
+        );
+}
+
+.section-icon.blue {
+    background:
+        linear-gradient(
+            135deg,
+            #007aff,
+            #34aadc
+        );
+}
+
+.section-heading h2 {
+    margin: 0;
+
+    font-size: 16px;
+
+    font-weight: 750;
+
+    letter-spacing: -0.3px;
+}
+
+.section-heading p {
+    margin: 2px 0 0;
+
+    font-size: 11px;
+
+    color: rgba(29, 29, 31, 0.48);
+}
+
+
+/* =====================================================
+   SELECTOR DE COLOR
+===================================================== */
+
+.picker-container {
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 13px 15px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255, 255, 255, 0.50);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.65);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease;
+}
+
+.picker-container:hover {
+    transform: translateY(-1px);
+
+    background:
+        rgba(255, 255, 255, 0.62);
+}
+
+#colorPicker {
+    width: 54px;
+    height: 54px;
+
+    padding: 4px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+#colorPicker::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+#colorPicker::-webkit-color-swatch {
+    border: none;
+
+    border-radius: 12px;
+}
+
+.picker-description {
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    gap: 3px;
+}
+
+.picker-description strong {
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.picker-description span {
+    font-size: 12px;
+
+    color: rgba(29, 29, 31, 0.48);
+
+    font-family: monospace;
+}
+
+.picker-arrow {
+    font-size: 15px;
+
+    color: rgba(29, 29, 31, 0.30);
+}
+
+
+/* =====================================================
+   RGB
+===================================================== */
+
+.rgb-section {
+    margin-top: 20px;
+}
+
+.rgb-heading {
+    padding: 0 4px;
+}
+
+
+/* =====================================================
+   TARJETAS RGB
+===================================================== */
+
+.rgb-card {
+    padding: 18px;
+
+    margin-bottom: 12px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255, 255, 255, 0.40);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.58);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.rgb-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 25px rgba(31, 38, 135, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.80);
+}
+
+.rgb-card-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+}
+
+.rgb-label {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.rgb-dot {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.35);
+}
+
+.rgb-dot.red {
+    background: #ff3b30;
+}
+
+.rgb-dot.green {
+    background: #34c759;
+}
+
+.rgb-dot.blue {
+    background: #007aff;
+}
+
+.rgb-label div {
+    display: flex;
+
+    flex-direction: column;
+}
+
+.rgb-label strong {
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.rgb-label small {
+    margin-top: 1px;
+
+    font-size: 8px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+
+    color: rgba(29, 29, 31, 0.40);
+}
+
+
+/* =====================================================
+   INPUT NUMÉRICO
+===================================================== */
+
+.rgb-number {
+    display: flex;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background:
+        rgba(255, 255, 255, 0.60);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.75);
+
+    box-shadow:
+        inset 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.rgb-number input {
+    width: 58px;
+
+    padding: 8px 6px;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    text-align: center;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #1d1d1f;
+}
+
+.rgb-number input::-webkit-inner-spin-button,
+.rgb-number input::-webkit-outer-spin-button {
+    opacity: 1;
+}
+
+.rgb-number span {
+    padding: 8px 10px;
+
+    font-size: 10px;
+
+    font-weight: 800;
+
+    color: rgba(29, 29, 31, 0.40);
+
+    background:
+        rgba(255, 255, 255, 0.30);
+
+    border-left:
+        1px solid rgba(255, 255, 255, 0.60);
+}
+
+
+/* =====================================================
+   SLIDERS RGB
+===================================================== */
+
+.form-range {
+    width: 100%;
+
+    height: 8px;
+
+    margin: 0;
+
+    cursor: pointer;
+}
+
+.form-range:focus {
+    box-shadow: none;
+}
+
+.form-range::-webkit-slider-runnable-track {
+    height: 7px;
+
+    border-radius: 20px;
+
+    border: none;
+}
+
+.form-range::-moz-range-track {
+    height: 7px;
+
+    border-radius: 20px;
+
+    border: none;
+}
+
+
+/* ROJO */
+
+.red-range::-webkit-slider-runnable-track {
+    background:
+        linear-gradient(
+            90deg,
+            #f1f1f1,
+            #ff3b30
+        );
+}
+
+.red-range::-moz-range-track {
+    background:
+        linear-gradient(
+            90deg,
+            #f1f1f1,
+            #ff3b30
+        );
+}
+
+
+/* VERDE */
+
+.green-range::-webkit-slider-runnable-track {
+    background:
+        linear-gradient(
+            90deg,
+            #f1f1f1,
+            #34c759
+        );
+}
+
+.green-range::-moz-range-track {
+    background:
+        linear-gradient(
+            90deg,
+            #f1f1f1,
+            #34c759
+        );
+}
+
+
+/* AZUL */
+
+.blue-range::-webkit-slider-runnable-track {
+    background:
+        linear-gradient(
+            90deg,
+            #f1f1f1,
+            #007aff
+        );
+}
+
+.blue-range::-moz-range-track {
+    background:
+        linear-gradient(
+            90deg,
+            #f1f1f1,
+            #007aff
+        );
+}
+
+
+/* =====================================================
+   THUMB DE LOS SLIDERS
+===================================================== */
+
+.form-range::-webkit-slider-thumb {
+    width: 21px;
+    height: 21px;
+
+    margin-top: -7px;
+
+    border: 3px solid white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.20);
+
+    appearance: none;
+
+    transition:
+        transform 0.15s ease;
+}
+
+.form-range::-webkit-slider-thumb:hover {
+    transform: scale(1.12);
+}
+
+.form-range::-moz-range-thumb {
+    width: 17px;
+    height: 17px;
+
+    border: 3px solid white;
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 3px 10px rgba(0, 0, 0, 0.20);
+}
+
+
+/* COLORES DE THUMB */
+
+.red-range::-webkit-slider-thumb {
+    background: #ff3b30;
+}
+
+.red-range::-moz-range-thumb {
+    background: #ff3b30;
+}
+
+.green-range::-webkit-slider-thumb {
+    background: #34c759;
+}
+
+.green-range::-moz-range-thumb {
+    background: #34c759;
+}
+
+.blue-range::-webkit-slider-thumb {
+    background: #007aff;
+}
+
+.blue-range::-moz-range-thumb {
+    background: #007aff;
+}
+
+
+/* =====================================================
+   ETIQUETAS DEL RANGO
+===================================================== */
+
+.range-labels {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 7px;
+
+    font-size: 9px;
+
+    font-weight: 600;
+
+    color: rgba(29, 29, 31, 0.35);
+}
+
+
+/* =====================================================
+   RESULTADO HEX
+===================================================== */
+
+.hex-result {
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin-top: 20px;
+
+    padding: 17px 18px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(88, 86, 214, 0.12),
+            rgba(0, 122, 255, 0.10)
+        );
+
+    border:
+        1px solid rgba(255, 255, 255, 0.65);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.hex-result-icon {
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    color: white;
+
+    font-size: 18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5856d6,
+            #007aff
+        );
+}
+
+.hex-result > div:nth-child(2) {
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+}
+
+.hex-result span {
+    font-size: 9px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    color: rgba(29, 29, 31, 0.43);
+}
+
+.hex-result strong {
+    margin-top: 2px;
+
+    font-size: 17px;
+
+    font-family: monospace;
+
+    letter-spacing: 0.5px;
+}
+
+.hex-check {
+    width: 31px;
+    height: 31px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    color: #34c759;
+
+    background:
+        rgba(52, 199, 89, 0.12);
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.glass-footer {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    margin-top: 22px;
+
+    padding: 15px 18px;
+
+    border-radius: 20px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.60);
+
+    background:
+        rgba(255, 255, 255, 0.36);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+
+    color: rgba(29, 29, 31, 0.58);
+}
+
+.footer-icon {
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 12px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #5856d6,
+            #007aff
+        );
+
+    font-size: 15px;
+}
+
+.footer-text {
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+.footer-text strong {
+    font-size: 11px;
+
+    font-weight: 700;
+
+    color: rgba(29, 29, 31, 0.72);
+}
+
+.footer-text span {
+    font-size: 10px;
+
+    margin-top: 2px;
+}
+
+.student-id {
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    color: rgba(29, 29, 31, 0.45);
+}
+
+
+/* =====================================================
+   ANIMACIÓN DE LAS ESFERAS
+===================================================== */
+
+@keyframes floatingOrb {
+
+    0% {
+        transform:
+            translate3d(0, 0, 0)
+            scale(1);
+    }
+
+    50% {
+        transform:
+            translate3d(15px, -20px, 0)
+            scale(1.05);
+    }
+
+    100% {
+        transform:
+            translate3d(-10px, 15px, 0)
+            scale(0.98);
+    }
+}
+
+
+/* =====================================================
+   REDUCIR MOVIMIENTO
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .background-orb {
+        animation: none;
+    }
+
+    .color-preview,
+    .rgb-card,
+    .picker-container {
+        transition: none;
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE — TABLET
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .app-container {
+        width: min(100% - 24px, 700px);
+
+        padding-top: 24px;
+    }
+
+    .glass-card {
+        padding: 18px;
+
+        border-radius: 28px;
+    }
+
+    .color-preview {
+        min-height: 230px;
+    }
+}
+
+
+/* =====================================================
+   RESPONSIVE — CELULAR
+===================================================== */
+
+@media (max-width: 576px) {
+
+    .app-container {
+        width: calc(100% - 18px);
+
+        padding-top: 15px;
+        padding-bottom: 18px;
+    }
+
+    .glass-header {
+        padding: 18px;
+
+        border-radius: 23px;
+
+        gap: 13px;
+    }
+
+    .header-icon {
+        width: 48px;
+        height: 48px;
+
+        border-radius: 15px;
+
+        font-size: 20px;
+    }
+
+    .header-text h1 {
+        font-size: 24px;
+    }
+
+    .header-text p {
+        font-size: 11px;
+    }
+
+    .glass-card {
+        padding: 12px;
+
+        border-radius: 25px;
+    }
+
+    .color-preview {
+        min-height: 210px;
+
+        padding: 14px;
+
+        border-radius: 21px;
+    }
+
+    .color-information {
+        gap: 8px;
+    }
+
+    .information-card {
+        padding: 12px;
+    }
+
+    .information-card strong {
+        font-size: 13px;
+    }
+
+    .glass-section {
+        padding: 15px;
+
+        border-radius: 21px;
+    }
+
+    .rgb-card {
+        padding: 15px;
+
+        border-radius: 19px;
+    }
+
+    .section-heading {
+        gap: 10px;
+    }
+
+    .section-icon {
+        width: 38px;
+        height: 38px;
+
+        border-radius: 12px;
+    }
+
+    .section-heading h2 {
+        font-size: 14px;
+    }
+
+    .section-heading p {
+        font-size: 10px;
+    }
+
+    .footer-text strong {
+        font-size: 9px;
+    }
+
+    .footer-text span {
+        font-size: 9px;
+    }
+
+    .student-id {
+        font-size: 9px;
+    }
+
+    .orb-one {
+        width: 230px;
+        height: 230px;
+
+        top: -80px;
+        left: -100px;
+    }
+
+    .orb-two {
+        width: 260px;
+        height: 260px;
+
+        right: -120px;
+    }
+
+    .orb-three {
+        width: 220px;
+        height: 220px;
+    }
+}
+
+
+/* =====================================================
+   CELULARES MUY PEQUEÑOS
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .header-text h1 {
+        font-size: 21px;
+    }
+
+    .header-text p {
+        display: none;
+    }
+
+    .color-preview {
+        min-height: 180px;
+    }
+
+    .rgb-number input {
+        width: 50px;
+    }
+
+    .footer-icon {
+        width: 34px;
+        height: 34px;
+    }
+}
